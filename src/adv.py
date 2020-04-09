@@ -53,31 +53,39 @@ player = Player(room['outside'])
 #
 # If the user enters "q", quit the game.
 
-direction = 'start'	
-while direction is not 'q':	
-    try:	
-        print(player.location.name)	
-        print(player.location.description)	
-    except: 	
-        print("You can't go that way")	
-    direction = input("Please enter a direction")	
-    if direction == "w": 	
-        try: 	
-            player.location = player.location.n_to	
-        except:	
-            print("I told you")	
-    elif direction == "s": 	
-        try: 	
-            player.location = player.location.s_to	
-        except:	
-            print("I told you")	
-    elif direction == "a": 	
-        try: 	
-            player.location = player.location.e_to	
-        except:	
-            print("I told you")	
-    elif direction == "d": 	
-        try: 	
-            player.location = player.location.w_to	
-        except:	
-            print("I told you") 
+current_location = None 
+direction = 'start'
+
+print("Welcome to the game:")
+print(" Enter n, s, e, w to go North, South, West or East or q to quit")
+
+while direction is not 'q':
+    
+    print(player.location.name)
+    print(player.location.description)
+
+    direction = input("Where to?" + "\n")
+    if direction == "n": 
+        if player.location == player.location.n_to:
+            print('You cannot go that way')
+        else: 
+            player.location = player.location.n_to
+    elif direction == "s": 
+        if player.location == player.location.s_to:
+            print('You cannot go that way')
+        else: 
+            player.location = player.location.s_to
+    elif direction == "e": 
+        if player.location == player.location.e_to:
+            print('You cannot go that way')
+        else: 
+            player.location = player.location.e_to
+    elif direction == "w": 
+        if player.location == player.location.w_to:
+            print('You cannot go that way')
+        else: 
+            player.location = player.location.w_to
+
+            
+if direction == 'q':
+    print('You have exited the game')
